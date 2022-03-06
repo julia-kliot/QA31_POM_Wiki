@@ -1,6 +1,7 @@
 package testsWiki;
 
 import configWiki.ConfigurationWiki;
+import configWiki.DataProviderWiki;
 import models.Auth;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -18,4 +19,35 @@ public class Login extends ConfigurationWiki {
                 .isLogged();
         Assert.assertTrue(isLogged);
     }
+    @Test(dataProvider = "loginData", dataProviderClass = DataProviderWiki.class)
+    public void loginTest2(Auth user) {
+        new MainScreen(driver)
+                .clickOnFlowButton()
+                .clickOnLoginWikibutton()
+                .fillInLoginForm(user)
+                .clickOnFlowButton()
+                .logOut();
+        //.clickOnFlowButton()
+       // .isLogged();
+
+
+
+    }
+    @Test(dataProvider = "loginDataCvs",dataProviderClass = DataProviderWiki.class)
+    public void loginDataFromCSV(Auth user) {
+        String inf = new MainScreen(driver)
+                .clickOnFlowButton()
+                .clickOnLoginWikibutton()
+                .fillInLoginForm(user)
+                .clickOnFlowButton()
+                .isAccountPresentAssert()
+                .logOut()
+                //.isElOnMainPagePresAssert()
+                .clickOnFlowButton()
+                .getInf();
+        Assert.assertEquals(inf, "Log in to Wikipedia");
+
+    }
+
+
 }

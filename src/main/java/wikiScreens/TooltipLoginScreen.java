@@ -15,6 +15,7 @@ public class TooltipLoginScreen extends BaseScreen {
     @FindBy(xpath = "//*[@resource-id='org.wikipedia:id/explore_overflow_log_out']")
     MobileElement logOutButton;
 
+
     public LoginScreen clickOnLoginWikibutton() {
         logButton.click();
         return new LoginScreen(driver);
@@ -27,5 +28,12 @@ public class TooltipLoginScreen extends BaseScreen {
     public TooltipLoginScreen isAccountPresentAssert() {
         Assert.assertTrue(logOutButton.isDisplayed());
         return this;
+    }
+    public MainScreen logOut(){
+        logOutButton.click();
+        return new MainScreen(driver);}
+
+    public String getInf () {
+        return logButton.getText();
     }
 }
