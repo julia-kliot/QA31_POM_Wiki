@@ -17,6 +17,7 @@ public class TooltipLoginScreen extends BaseScreen {
 
 
     public LoginScreen clickOnLoginWikibutton() {
+        should(logButton,20);
         logButton.click();
         return new LoginScreen(driver);
     }
@@ -27,9 +28,11 @@ public class TooltipLoginScreen extends BaseScreen {
     }
     public TooltipLoginScreen isAccountPresentAssert() {
         Assert.assertTrue(logOutButton.isDisplayed());
+        should(logOutButton,20);
         return this;
     }
     public MainScreen logOut(){
+        should(logOutButton,20);
         logOutButton.click();
         return new MainScreen(driver);}
 

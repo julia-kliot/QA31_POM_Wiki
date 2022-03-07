@@ -26,7 +26,7 @@ public class MainScreen extends BaseScreen {
     }
 
     public TooltipLoginScreen clickOnFlowButton() {
-        should(flowButton,20);
+        should(flowButton,40);
         flowButton.click();
         return new TooltipLoginScreen(driver);
     }
